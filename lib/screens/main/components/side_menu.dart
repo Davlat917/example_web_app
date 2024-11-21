@@ -1,5 +1,7 @@
+import 'package:admin/controllers/MenuAppController.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 
 class SideMenu extends StatelessWidget {
   const SideMenu({
@@ -8,51 +10,84 @@ class SideMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ctr = context.read<MenuAppController>();
     return Drawer(
       child: ListView(
         children: [
           DrawerHeader(
-            child: Image.asset("assets/images/logo.png"),
+            child: Image.asset("assets/icons/logo.png"),
           ),
-          DrawerListTile(
-            title: "Dashboard",
-            svgSrc: "assets/icons/menu_dashboard.svg",
-            press: () {},
+          Card(
+            color: ctr.selectedMenuIndex == 0 ? Colors.indigo : null,
+            child: DrawerListTile(
+              title: "Statistics",
+              svgSrc: "assets/icons/menu_dashboard.svg",
+              press: () {
+                context
+                    .read<MenuAppController>()
+                    .updateMenuIndex(0); // Dashboard
+              },
+            ),
           ),
-          DrawerListTile(
-            title: "Transaction",
-            svgSrc: "assets/icons/menu_tran.svg",
-            press: () {},
+          Card(
+            color: ctr.selectedMenuIndex == 1 ? Colors.indigo : null,
+            child: DrawerListTile(
+              title: "Grups",
+              svgSrc: "assets/icons/menu_tran.svg",
+              press: () {
+                context.read<MenuAppController>().updateMenuIndex(1); // Task
+              },
+            ),
           ),
-          DrawerListTile(
-            title: "Task",
-            svgSrc: "assets/icons/menu_task.svg",
-            press: () {},
+          Card(
+            color: ctr.selectedMenuIndex == 2 ? Colors.indigo : null,
+            child: DrawerListTile(
+              title: "Imtihonlar",
+              svgSrc: "assets/icons/menu_task.svg",
+              press: () {
+                context.read<MenuAppController>().updateMenuIndex(2); // Task
+              },
+            ),
           ),
-          DrawerListTile(
-            title: "Documents",
-            svgSrc: "assets/icons/menu_doc.svg",
-            press: () {},
+          Card(
+            color: ctr.selectedMenuIndex == 3 ? Colors.indigo : null,
+            child: DrawerListTile(
+              title: "Fanlar",
+              svgSrc: "assets/icons/menu_doc.svg",
+              press: () {
+                context.read<MenuAppController>().updateMenuIndex(3); // Task
+              },
+            ),
           ),
-          DrawerListTile(
-            title: "Store",
-            svgSrc: "assets/icons/menu_store.svg",
-            press: () {},
+          Card(
+            color: ctr.selectedMenuIndex == 4 ? Colors.indigo : null,
+            child: DrawerListTile(
+              title: "Hujjatlar",
+              svgSrc: "assets/icons/menu_store.svg",
+              press: () {
+                context.read<MenuAppController>().updateMenuIndex(4); // Task
+              },
+            ),
           ),
-          DrawerListTile(
-            title: "Notification",
-            svgSrc: "assets/icons/menu_notification.svg",
-            press: () {},
+          Card(
+            color: ctr.selectedMenuIndex == 5 ? Colors.indigo : null,
+            child: DrawerListTile(
+              title: "Profile",
+              svgSrc: "assets/icons/menu_profile.svg",
+              press: () {
+                context.read<MenuAppController>().updateMenuIndex(5); // Task
+              },
+            ),
           ),
-          DrawerListTile(
-            title: "Profile",
-            svgSrc: "assets/icons/menu_profile.svg",
-            press: () {},
-          ),
-          DrawerListTile(
-            title: "Settings",
-            svgSrc: "assets/icons/menu_setting.svg",
-            press: () {},
+          Card(
+            color: ctr.selectedMenuIndex == 6 ? Colors.indigo : null,
+            child: DrawerListTile(
+              title: "Settings",
+              svgSrc: "assets/icons/menu_setting.svg",
+              press: () {
+                context.read<MenuAppController>().updateMenuIndex(6); // Task
+              },
+            ),
           ),
         ],
       ),

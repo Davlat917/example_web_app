@@ -1,11 +1,9 @@
+import 'package:admin/constants.dart';
+import 'package:admin/screens/dashboard/components/storage_info_card.dart';
 import 'package:flutter/material.dart';
 
-import '../../../constants.dart';
-import 'chart.dart';
-import 'storage_info_card.dart';
-
-class StorageDetails extends StatelessWidget {
-  const StorageDetails({
+class SettingsDetails extends StatelessWidget {
+  const SettingsDetails({
     Key? key,
   }) : super(key: key);
 
@@ -21,24 +19,27 @@ class StorageDetails extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Umumiy Natijalar",
+            "Storage Details",
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.w500,
             ),
           ),
           SizedBox(height: defaultPadding),
-          Chart(),
+         Center(child: CircleAvatar(
+          maxRadius: defaultPadding*4 ,
+          backgroundImage:  Image.asset('assets/images/user1.jpg').image,
+         )),
           StorageInfoCard(
             svgSrc: "assets/icons/Documents.svg",
-            title: "Talabalar Kurs Ishi",
-            amountOfFiles: "58 %",
+            title: "Documents Files",
+            amountOfFiles: "1.3GB",
             numOfFiles: 1328,
           ),
           StorageInfoCard(
             svgSrc: "assets/icons/media.svg",
-            title: "Talabalar Media Filelari",
-            amountOfFiles: "32 %",
+            title: "Media Files",
+            amountOfFiles: "15.3GB",
             numOfFiles: 1328,
           ),
           StorageInfoCard(

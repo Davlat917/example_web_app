@@ -1,14 +1,12 @@
+import 'package:admin/constants.dart';
 import 'package:admin/responsive.dart';
+import 'package:admin/screens/dashboard/components/header.dart';
+import 'package:admin/screens/dashboard/components/storage_details.dart';
 import 'package:admin/screens/dashboard/widgets/my_files.dart';
 import 'package:admin/screens/dashboard/widgets/reseny.dart';
 import 'package:flutter/material.dart';
 
-import '../../constants.dart';
-import 'components/header.dart';
-
-import 'components/storage_details.dart';
-
-class DashboardScreen extends StatelessWidget {
+class FanlarPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -26,7 +24,10 @@ class DashboardScreen extends StatelessWidget {
                   flex: 5,
                   child: Column(
                     children: [
-                      MyFilesStatistics(),
+                      Text(
+                        "Talabalarning Fanlar doirasida",
+                        style: Theme.of(context).textTheme.titleMedium,
+                      ),
                       SizedBox(height: defaultPadding),
                       RecentFilesStat(),
                       if (Responsive.isMobile(context))

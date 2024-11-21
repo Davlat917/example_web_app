@@ -1,11 +1,13 @@
+
+import 'package:admin/models/MyFiles.dart';
 import 'package:admin/screens/hujjatlar/data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../constants.dart';
 
-class FileInfoCard extends StatelessWidget {
-  const FileInfoCard({
+class FileInfoCardStatistic extends StatelessWidget {
+  const FileInfoCardStatistic({
     Key? key,
     required this.info,
   }) : super(key: key);
@@ -57,14 +59,14 @@ class FileInfoCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "${info.numOfFiles} Files",
+                "${info.numOfFiles} Ball",
                 style: Theme.of(context)
                     .textTheme
                     .bodySmall!
                     .copyWith(color: Colors.white70),
               ),
               Text(
-                info.totalStorage!,
+                '${info.totalStorage!} %',
                 style: Theme.of(context)
                     .textTheme
                     .bodySmall!

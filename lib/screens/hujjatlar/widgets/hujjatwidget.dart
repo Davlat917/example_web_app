@@ -1,12 +1,14 @@
+
 import 'package:admin/models/MyFiles.dart';
 import 'package:admin/responsive.dart';
+import 'package:admin/screens/dashboard/components/file_info_card.dart';
+import 'package:admin/screens/hujjatlar/data.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
-import 'file_info_card.dart';
 
-class MyFiles extends StatelessWidget {
-  const MyFiles({
+class MyFilesHuj extends StatelessWidget {
+  const MyFilesHuj({
     Key? key,
   }) : super(key: key);
 
@@ -19,21 +21,10 @@ class MyFiles extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              "Guruhlarning osishi grafigi",
+              "My Files",
               style: Theme.of(context).textTheme.titleMedium,
             ),
-            ElevatedButton.icon(
-              style: TextButton.styleFrom(
-                padding: EdgeInsets.symmetric(
-                  horizontal: defaultPadding * 1.5,
-                  vertical:
-                      defaultPadding / (Responsive.isMobile(context) ? 2 : 1),
-                ),
-              ),
-              onPressed: () {},
-              icon: Icon(Icons.add),
-              label: Text("Yangi Guruh"),
-            ),
+           SizedBox.shrink()
           ],
         ),
         SizedBox(height: defaultPadding),
@@ -67,14 +58,14 @@ class FileInfoCardGridView extends StatelessWidget {
     return GridView.builder(
       physics: NeverScrollableScrollPhysics(),
       shrinkWrap: true,
-      itemCount: demoMyFiles.length,
+      itemCount: demoMyFilesshuj.length,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: crossAxisCount,
         crossAxisSpacing: defaultPadding,
         mainAxisSpacing: defaultPadding,
         childAspectRatio: childAspectRatio,
       ),
-      itemBuilder: (context, index) => FileInfoCard(info: demoMyFiles[index]),
+      itemBuilder: (context, index) => FileInfoCard(info: demoMyFilesshuj[index]),
     );
   }
 }

@@ -1,33 +1,32 @@
+import 'package:admin/constants.dart';
 import 'package:admin/controllers/MenuAppController.dart';
 import 'package:admin/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../constants.dart';
-
-class Header extends StatelessWidget {
-  const Header({
-    Key? key,
-  }) : super(key: key);
+class HeaderGrup extends StatelessWidget {
+  const HeaderGrup({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final menuController = context.read<MenuAppController>();
+
     return Row(
       children: [
         if (!Responsive.isDesktop(context))
           IconButton(
             icon: Icon(Icons.menu),
-            onPressed: context.read<MenuAppController>().controlMenu,
+            onPressed: menuController.controlMenu,
           ),
         if (!Responsive.isMobile(context))
           Text(
-            "Statistics",
+            "Guruhlar",
             style: Theme.of(context).textTheme.titleLarge,
           ),
         if (!Responsive.isMobile(context))
           Spacer(flex: Responsive.isDesktop(context) ? 2 : 1),
         Expanded(child: SearchField()),
-        ProfileCard()
+        ProfileCard(),
       ],
     );
   }
@@ -74,16 +73,24 @@ class ProfileCard extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class SearchField extends StatelessWidget {
-  const SearchField({
+  SearchField({
     Key? key,
   }) : super(key: key);
+  TextEditingController controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    final ctr = context.read<MenuAppController>();
+
     return TextField(
+      controller: controller,
+      onChanged: (value) {
+        ctr.search(controller.text);
+      },
       decoration: InputDecoration(
-        hintText: "Search",
+        hintText: "FISH",
         fillColor: secondaryColor,
         filled: true,
         border: OutlineInputBorder(
